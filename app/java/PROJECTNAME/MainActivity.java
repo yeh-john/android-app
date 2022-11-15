@@ -14,7 +14,8 @@ import android.webkit.WebViewClient;
 import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
-
+    
+    // Import webview
     WebView webView;
 
     @Override
