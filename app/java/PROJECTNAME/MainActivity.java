@@ -1,4 +1,4 @@
-package com.example.soratunagu;
+package com.example.ii7get;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,10 +11,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import java.util.regex.Pattern;
-
 public class MainActivity extends AppCompatActivity {
-    
+
     // Import webview
     WebView webView;
 
@@ -26,10 +24,9 @@ public class MainActivity extends AppCompatActivity {
         // Get id
         webView = findViewById(R.id.web_view);
 
-        // Add setting
-        WebSettings webSettings = webView.getSettings();
+        // Add settings
+        WebSettings webSettings =  webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        // Zoom function
         webSettings.setBuiltInZoomControls(true);
         webSettings.setDisplayZoomControls(false);
 
@@ -46,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
         loadMyUrl("ii7get.com");
 
     }
-
+    
+    // Create loadMy url
     void loadMyUrl(String url){
         boolean matchUrl = Patterns.WEB_URL.matcher(url).matches();
         if(matchUrl){
@@ -56,11 +54,22 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Add onBackPressed using ctrl+o
+    @Override
+    public void onBackPressed() {
+        if (webView.canGoBack()) {
+            webView.goBack();
+        }else{
+            super.onBackPressed();
+        }
+    }
+    
+    
+    // Create MyWebViewClient class and Add "shouldOverrideUrlLoading, onPageStarted and onPageFinished" using ctrl+o
     class MyWebViewClient extends WebViewClient{
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-            // return super.shouldOverrideUrlLoading(view, request);
-            return false;
+            return super.shouldOverrideUrlLoading(view, request);
         }
 
         @Override
