@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         // Add client
         webView.setWebViewClient(new MyWebViewClient());
         webView.setWebChromeClient(new WebChromeClient(){
+            // Add onProgressChanged using ctrl+o
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 super.onProgressChanged(view, newProgress);
